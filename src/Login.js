@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
 import { connect } from 'react-redux';
 
-import { saveFB } from './actions/fbData_Action';
-
-
+import { saveFB, clearFB } from './actions/fbData_Action';
 
 
 class Facebook extends Component {
@@ -33,9 +31,11 @@ class Facebook extends Component {
   componentClicked = () => console.log("clicked");
 
   LogoutHandle = () => {
+
     this.setState(prevState => ({
       isLoggedIn: false
     }));
+    this.props.clearFB();
   }  
   
 
@@ -81,7 +81,9 @@ class Facebook extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        saveFB: (fbData) => dispatch(saveFB(fbData))
+        saveFB: (fbData) => dispatch(saveFB(fbData)),
+        clearFB: (fbData) => dispatch(clearFB()),
+
     };
 };
 
