@@ -1,17 +1,10 @@
 import React from "react";
-import Tags from "../../components/Tags/tags";
-import { Link } from "react-router-dom";
 
 const UserGistList = props => {
-    const { gist } = props;
+    const { picture } = props;
 
     return (
-        <Link to={`/gist/${gist.id}`}>
-            <div className="usergist">
-                {gist.description ? gist.description : "No Description"}
-                <Tags gist={gist} />
-            </div>
-        </Link>
+       <img style = {{height:"80px", width:"80px"}} src={picture} alt="some text"> </img>
     );
 };
 

@@ -1,27 +1,33 @@
 import React, { Component } from 'react';
 import './App.css';
-import  {BrowserRouter, Route, Switch} from 'react-router-dom';
-import GistDetailsContainer from './components/GistDetails/GistDetailsContainer';
-import Home from './components/Home'
-
+import Facebook from './Login'
+import {BrowserRouter,Route,Link} from 'react-router-dom';
+import PhotosList from "./photosList";
 
 class App extends Component {
   render() {
     return (
-        <BrowserRouter>
+      <div className="App">
+        <header className="App-header">
+        
+          <BrowserRouter>
             <div>
-                <Switch>
-                    <Route path="/gist/:gistID" component = {GistDetailsContainer}/>
-                    <Route path="/" component = {Home}/>
-
-                </Switch>
-
+            
+            <Route path = '/' exact   render = {
+                () => {
+                 return (<div><h1>Welcome to my page </h1>
+                  <Facebook />
+                  <PhotosList />
+                  </div>)
+                }
+            } />
             </div>
-        </BrowserRouter>
+          </BrowserRouter>
+        </header> 
+      
+      </div>
     );
   }
-
 }
 
 export default App;
-
